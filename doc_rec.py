@@ -21,7 +21,7 @@ parser.add_argument("--model", type=str, default='best', help="best model or las
 args = parser.parse_args()
 
 # path 
-data_path: str = './data/etri4rec_v2.csv'
+data_path: str = './data/etri4rec.csv'
 vocab_path: str = './vocab'
 result_path: str = './result'
 
@@ -43,7 +43,7 @@ set_seed(args.seed)
 # and nested dictionary for analysis on recommendation result
 # {document id : {sentence id : text}} 
 print("build data dicitionary ...")
-df = pd.read_csv(data_path, encoding='cp949')
+df = pd.read_csv(data_path, encoding='utf-8')
 original_doc_idx = df.doc_id.unique()
 tran2ori = {k:v for k, v in enumerate(original_doc_idx)}
 print(f"# of documents: {len(original_doc_idx)}")
